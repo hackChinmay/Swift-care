@@ -1,8 +1,12 @@
 from flask import Flask, render_template, request, redirect, url_for, flash, session
+from datetime import timedelta, datetime
 import sqlite3
 
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'
+
+# Set the session lifetime duration (e.g., 10 minutes of inactivity)
+SESSION_TIMEOUT = timedelta(seconds=60)
 
 # Database connection function
 def get_db_connection():
@@ -20,28 +24,62 @@ def init_db():
     conn.commit()
     conn.close()
 
-# Serve the landing page at the home route
+# Decorator to check if the user is logged in and session has not expired
+def login_required(f):
+    def wrapper(*args, **kwargs):
+        # Check if the user is logged in
+        if 'username' not in session:
+            return redirect(url_for('signin'))
+        
+        # Check if session has expired
+        last_activity = session.get('last_activity')
+        if last_activity is not None:
+            now = datetime.now()
+            last_activity_time = datetime.strptime(last_activity, '%Y-%m-%d %H:%M:%S')
+            if now - last_activity_time > SESSION_TIMEOUT:
+                session.pop('username', None)
+                flash('Your session has timed out. Please log in again.')
+                return redirect(url_for('signin'))
+        
+        # Update last activity time
+        session['last_activity'] = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+        
+        return f(*args, **kwargs)
+    wrapper.__name__ = f.__name__
+    return wrapper
+
+# Redirect the root page to the signin page
 @app.route('/')
+def home():
+    return redirect(url_for('signin'))
+
+# Route for "Landing" page (this will now be protected by login)
+@app.route('/landing')
+@login_required
 def landing_page():
     return render_template('landing.html')
 
-# Route for "About" page
+# Route for "About" page (protected by login)
 @app.route('/about')
+@login_required
 def about():
     return render_template('about.html')
 
-# Route for "Program" page
+# Route for "Program" page (protected by login)
 @app.route('/program')
+@login_required
 def program():
     return render_template('program.html')
 
-# Route for "General Health Checkup" page
+# Route for "General Health Checkup" page (protected by login)
 @app.route('/general-health-checkup')
+@login_required
 def general_health_checkup():
     return render_template('general_health_checkup.html')
 
-# Route for specific doctor's appointment booking
+# Route for specific doctor's appointment booking (protected by login)
 @app.route('/book_doctor/<doctor_name>', methods=['GET', 'POST'])
+@login_required
 def book_doctor(doctor_name):
     if request.method == 'POST':
         patient_name = request.form['patient_name']
@@ -49,35 +87,43 @@ def book_doctor(doctor_name):
         blood_group = request.form['blood_group']
         address = request.form['address']
         
-        # Here, you can handle saving the appointment data to the database
-        return f'Appointment with {doctor_name} for {patient_name} booked successfully!'
+        # Render the confirmation page with all details
+        return render_template('appointment_confirmation.html', 
+                               doctor_name=doctor_name, 
+                               patient_name=patient_name,
+                               age=age, 
+                               blood_group=blood_group, 
+                               address=address)
     
     # Render the appointment booking page with the doctor's name
     return render_template('appointment_booking.html', doctor_name=doctor_name)
 
-# Route for Appointment Booking (POST submission handler)
-@app.route('/book_appointment', methods=['POST'])
-def book_appointment():
-    patient_name = request.form['patient_name']
-    age = request.form['age']
-    blood_group = request.form['blood_group']
-    address = request.form['address']
-    
-    # You can add logic here to save appointment data to a database or perform other actions
-    return f'Appointment for {patient_name} booked successfully!'
-
-# Route for "Health Camp" page
+# Route for "Health Camp" page (protected by login)
 @app.route('/health-camp')
+@login_required
 def health_camp():
     return render_template('health_camp.html')
 
-# Route for "Blood Donation" page
+# Route for handling Health Camp booking confirmation (protected by login)
+@app.route('/confirm_health_camp', methods=['POST'])
+@login_required
+def confirm_health_camp():
+    purpose = request.form['purpose']
+    target_population = request.form['target_population']
+    date_venue = request.form['date_venue']
+    address = request.form['address']
+
+    return render_template('health_camp_confirmation.html', purpose=purpose, date_venue=date_venue, address=address)
+
+# Route for "Blood Donation" page (protected by login)
 @app.route('/blood-donation')
+@login_required
 def blood_donation():
     return render_template('blood_donation.html')
 
-# Route for "ICU On Wheel" page
+# Route for "ICU On Wheel" page (protected by login)
 @app.route('/icu-on-wheel')
+@login_required
 def icu_on_wheel():
     return render_template('icu_on_wheel.html')
 
@@ -87,18 +133,19 @@ def signin():
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
-        
+
         conn = get_db_connection()
         user = conn.execute('SELECT * FROM users WHERE username = ? AND password = ?', (username, password)).fetchone()
         conn.close()
-        
+
         if user:
             session['username'] = username
-            return 'Logged in successfully!'
+            session['last_activity'] = datetime.now().strftime('%Y-%m-%d %H:%M:%S')  # Track last activity
+            return redirect(url_for('landing_page'))
         else:
             flash('Invalid credentials, please try again.')
             return redirect(url_for('signin'))
-    
+
     return render_template('login_signup.html')
 
 # Signup route for creating a new account
@@ -107,16 +154,24 @@ def signup():
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
-        
+
         conn = get_db_connection()
         conn.execute('INSERT INTO users (username, password) VALUES (?, ?)', (username, password))
         conn.commit()
         conn.close()
-        
+
         flash('Account created successfully! Please log in.')
         return redirect(url_for('signin'))
-    
+
     return render_template('signup.html')
+
+# Route for logging out
+@app.route('/logout')
+@login_required
+def logout():
+    session.pop('username', None)
+    flash('You have been logged out.')
+    return redirect(url_for('signin'))
 
 if __name__ == '__main__':
     init_db()

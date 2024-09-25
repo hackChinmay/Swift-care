@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Swiftcare</title>
-    <link rel="stylesheet" href="/static/css/styles.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
 <body>
 
@@ -12,7 +12,7 @@
 <div class="navbar">
     <!-- Make the Swiftcare logo clickable, linking back to the landing page -->
     <h1><span style="font-size: 40px; color: rgb(255, 255, 255);">SwiftCare</span></h1>
-    <div style="margin-left: -50px">
+    <div>
         <a href="{{ url_for('signin') }}">Signin</a>
         <a href="{{ url_for('signup') }}">Signup</a>
         <a href="{{ url_for('about') }}">About</a>
@@ -30,7 +30,7 @@
 <div class="guidance">
     <h3>IN GUIDANCE WITH</h3>
     <div class="logos">
-        <img src="/static/images/ministry_of_health.svg" alt="National Health Mission">
+        <img src="{{ url_for('static', filename='images/national_health_mission.png') }}" alt="National Health Mission">
         <img src="{{ url_for('static', filename='images/ministry_of_health.svg') }}" alt="Ministry of Health and Family Welfare">
     </div>
 </div>
