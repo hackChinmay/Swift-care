@@ -4,7 +4,7 @@ import sqlite3
 from chatbot import college_chatbot  # Import the chatbot function
 
 app = Flask(__name__)
-app.secret_key = 'your_secret_key'
+app.secret_key = 'l'
 
 # Set the session lifetime duration (e.g., 20 minutes of inactivity)
 SESSION_TIMEOUT = timedelta(seconds=1200)
