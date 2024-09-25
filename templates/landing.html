@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swiftcare</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+
+<!-- Navbar -->
+<div class="navbar">
+    <!-- Make the Swiftcare logo clickable, linking back to the landing page -->
+    <h1><a href="{{ url_for('landing_page') }}" style="text-decoration: none; color: white;">SWIFTCARE</a></h1>
+    <div>
+        <a href="{{ url_for('signin') }}">Signin</a>
+        <a href="{{ url_for('signup') }}">Signup</a>
+        <a href="{{ url_for('about') }}">About</a>
+        <a href="{{ url_for('program') }}">Program</a>
+    </div>
+</div>
+
+<!-- Banner Section -->
+<div class="banner">
+    <h2>Hospital on Wheels(HOWs)</h2>
+    <p>Cares That Comes To You</p>
+</div>
+
+<!-- Guidance Section -->
+<div class="guidance">
+    <h3>IN GUIDANCE WITH</h3>
+    <div class="logos">
+        <img src="{{ url_for('static', filename='images/national_health_mission.png') }}" alt="National Health Mission">
+        <img src="{{ url_for('static', filename='images/ministry_of_health.svg') }}" alt="Ministry of Health and Family Welfare">
+    </div>
+</div>
+
+<!-- Health Services Buttons -->
+<div class="services">
+    <a href="{{ url_for('general_health_checkup') }}" class="service-btn">General Health Checkup</a>
+    <a href="{{ url_for('health_camp') }}" class="service-btn">Health Camp</a>
+    <a href="{{ url_for('blood_donation') }}" class="service-btn">Blood Donation</a>
+    <a href="{{ url_for('icu_on_wheel') }}" class="service-btn">ICU On Wheel</a>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+    <p>Made With Love In VIT @Hack Battle IEEE CSE</p>
+</div>
+
+</body>
+</html>

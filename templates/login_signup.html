@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swiftcare Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+
+<div class="navbar">
+    <h1>SWIFTCARE</h1>
+    <div>
+        <a href="{{ url_for('signin') }}">Signin</a>
+        <a href="{{ url_for('signup') }}">Signup</a>
+    </div>
+</div>
+
+<div class="container">
+    <h2>LOGIN</h2>
+    <form action="{{ url_for('signin') }}" method="POST">
+        <input type="text" name="username" placeholder="Enter Valid Username" required>
+        <input type="password" name="password" placeholder="Enter Valid Password" required>
+        <button type="submit">Sign In</button>
+    </form>
+    <p><a href="{{ url_for('signup') }}">Create A New Account</a></p>
+</div>
+
+</body>
+</html>
