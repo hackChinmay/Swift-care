@@ -3,16 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Health Camp | Swiftcare</title>
-    
+    <title>Health Camp Confirmation | Swiftcare</title>
+
     <!-- Google Fonts for Modern Look -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
-    
+
     <style>
-        /* Main Styling for the Health Camp page */
-        
         body {
             font-family: 'Poppins', sans-serif;
             margin: 0;
@@ -20,10 +18,9 @@
             background-color: #f5f5f5;
         }
 
-        /* Navbar */
         .navbar {
             background-color: #cc4433;
-            width: 98%;
+            width: 100%;
             padding: 20px;
             display: flex;
             justify-content: space-between;
@@ -61,15 +58,14 @@
             color: black;
         }
 
-        /* Form Container */
         .container {
             background-color: #cc4433;
             padding: 40px;
             border-radius: 10px;
             box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
             text-align: center;
-            width: 500px;
             margin: 150px auto;
+            width: 600px;
         }
 
         .container h2 {
@@ -78,21 +74,38 @@
             margin-bottom: 20px;
         }
 
-        input {
-            width: 90%;
-            padding: 15px;
-            margin: 10px 0;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-            font-size: 16px;
+        .hospital-list {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
         }
 
-        input::placeholder {
-            color: #999;
+        .hospital-item {
+            border: 2px solid #cc4433;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .hospital-item:nth-child(odd) {
+            background-color: #cc4433;
+            color: white;
+        }
+
+        .hospital-item:nth-child(even) {
+            background-color: white;
+            color: black;
+        }
+
+        .hospital-item span {
+            display: block;
+            font-size: 14px;
+            font-weight: normal;
         }
 
         button {
-            width: 90%;
+            width: 100%;
             padding: 15px;
             background-color: black;
             color: white;
@@ -112,7 +125,7 @@
 
 <!-- Navbar -->
 <div class="navbar">
-    <h1><span style="font-size: 40px; color: rgb(255, 255, 255);">SwiftCare</span></h1>
+    <h1><a href="{{ url_for('landing_page') }}" style="text-decoration: none; color: white;">SWIFTCARE</a></h1>
     <div>
         <a href="{{ url_for('signin') }}">Signin</a>
         <a href="{{ url_for('signup') }}">Signup</a>
@@ -121,24 +134,33 @@
     </div>
 </div>
 
-<!-- Health Camp Booking Form -->
+<!-- Confirmation Message -->
 <div class="container">
-    <h2>Health Camp</h2>
-    <form action="{{ url_for('confirm_health_camp') }}" method="POST">
-        <input type="text" name="purpose" placeholder="Enter Valid cause (ex: General Health checkup, Particular Disease)" required>
-        <input type="text" name="target_population" placeholder="Enter target population (age group, community)" required>
-        <input type="text" name="date_venue" placeholder="Enter Date and Venue" required>
-        <input type="text" name="address" placeholder="Enter Valid Address" required>
-        <button type="submit">Confirm Booking</button>
+    <h2>Hospital Details</h2>
+    <div class="hospital-list">
+        <div class="hospital-item">
+            Fortis Hospital, Chandigarh
+            <span>SCO, 11D, Sector 11, Chandigarh, 160011</span>
+        </div>
+        <div class="hospital-item">
+            Apple Hospital, Indore
+            <span>15/1, Bhawarkua Main Rd, Transport Nagar, Indore, Madhya Pradesh 452008</span>
+        </div>
+        <div class="hospital-item">
+            AIIMS, Delhi
+            <span>Sri Aurobindo Marg, Ansari Nagar East, New Delhi, Delhi 110029</span>
+        </div>
+        <div class="hospital-item">
+            Shri Narayan Hospital, Vellore
+            <span>Azad Rd, Thirumalaikodi, Vellore, Tamil Nadu 632055</span>
+        </div>
+    </div>
+
+    <!-- Confirm button to move to the final confirmation page -->
+    <form action="{{ url_for('final_health_camp_confirmation') }}" method="POST">
+        <button type="submit">Confirm</button>
     </form>
 </div>
-
-
-<!-- Footer -->
-<div class="footer">
-    <p>Made With Love In VIT @Hack Battle IEEE CSE</p>
-</div>
-
 
 </body>
 </html>

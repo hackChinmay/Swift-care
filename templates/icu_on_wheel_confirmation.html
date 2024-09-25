@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Health Camp | Swiftcare</title>
-    
+    <title>ICU on Wheel Confirmation | Swiftcare</title>
+
     <!-- Google Fonts for Modern Look -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
-    
+
     <style>
-        /* Main Styling for the Health Camp page */
+        /* Main Styling for the Confirmation Page */
         
         body {
             font-family: 'Poppins', sans-serif;
@@ -61,14 +61,14 @@
             color: black;
         }
 
-        /* Form Container */
+        /* Confirmation Container */
         .container {
             background-color: #cc4433;
             padding: 40px;
             border-radius: 10px;
             box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
             text-align: center;
-            width: 500px;
+            width: 400px;
             margin: 150px auto;
         }
 
@@ -78,17 +78,10 @@
             margin-bottom: 20px;
         }
 
-        input {
-            width: 90%;
-            padding: 15px;
-            margin: 10px 0;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-            font-size: 16px;
-        }
-
-        input::placeholder {
-            color: #999;
+        .container p {
+            font-size: 18px;
+            color: white;
+            margin-bottom: 20px;
         }
 
         button {
@@ -121,24 +114,15 @@
     </div>
 </div>
 
-<!-- Health Camp Booking Form -->
+<!-- Confirmation Message -->
 <div class="container">
-    <h2>Health Camp</h2>
-    <form action="{{ url_for('confirm_health_camp') }}" method="POST">
-        <input type="text" name="purpose" placeholder="Enter Valid cause (ex: General Health checkup, Particular Disease)" required>
-        <input type="text" name="target_population" placeholder="Enter target population (age group, community)" required>
-        <input type="text" name="date_venue" placeholder="Enter Date and Venue" required>
-        <input type="text" name="address" placeholder="Enter Valid Address" required>
-        <button type="submit">Confirm Booking</button>
-    </form>
+    <h2>ICU on Wheel Confirmation</h2>
+    <p>Your Details Had been Confirmed.</p>
+    <p>The ICU will be reaching you within helpful time.</p>
+    <a href="{{ url_for('landing_page') }}">
+        <button>Home Page</button>
+    </a>
 </div>
-
-
-<!-- Footer -->
-<div class="footer">
-    <p>Made With Love In VIT @Hack Battle IEEE CSE</p>
-</div>
-
 
 </body>
 </html>

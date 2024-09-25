@@ -1,12 +1,13 @@
-from flask import Flask, render_template, request, redirect, url_for, flash, session
+from flask import Flask, render_template, request, redirect, url_for, flash, session, jsonify
 from datetime import timedelta, datetime
 import sqlite3
+from chatbot import college_chatbot  # Import the chatbot function
 
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'
 
-# Set the session lifetime duration (e.g., 10 minutes of inactivity)
-SESSION_TIMEOUT = timedelta(seconds=60)
+# Set the session lifetime duration (e.g., 20 minutes of inactivity)
+SESSION_TIMEOUT = timedelta(seconds=1200)
 
 # Database connection function
 def get_db_connection():
@@ -115,6 +116,12 @@ def confirm_health_camp():
 
     return render_template('health_camp_confirmation.html', purpose=purpose, date_venue=date_venue, address=address)
 
+# Route for final health camp confirmation page
+@app.route('/final_health_camp_confirmation', methods=['POST'])
+@login_required
+def final_health_camp_confirmation():
+    return render_template('final_health_camp_confirmation.html')
+
 # Route for "Blood Donation" page (protected by login)
 @app.route('/blood-donation')
 @login_required
@@ -150,6 +157,37 @@ def confirm_blood_donation():
 @login_required
 def icu_on_wheel():
     return render_template('icu_on_wheel.html')
+
+# Route for handling ICU on Wheel form submission
+@app.route('/confirm_icu_on_wheel', methods=['POST'])
+@login_required
+def confirm_icu_on_wheel():
+    purpose = request.form['purpose']
+    equipment = request.form['equipment']
+    personnel = request.form['personnel']
+    protocols = request.form['protocols']
+    patient_name = request.form['patient_name']
+    contact_info = request.form['contact_info']
+    address = request.form['address']
+    
+    # Handle logic to store the data or process it (e.g., saving to database)
+    
+    # For now, let's just render a confirmation page
+    return render_template('icu_on_wheel_confirmation.html', 
+                           purpose=purpose, 
+                           equipment=equipment, 
+                           personnel=personnel, 
+                           protocols=protocols, 
+                           patient_name=patient_name, 
+                           contact_info=contact_info, 
+                           address=address)
+
+# Chatbot Route
+@app.route('/chat', methods=['POST'])
+def chat():
+    user_input = request.json.get('question')
+    response = college_chatbot(user_input)
+    return jsonify({"response": response})
 
 # Signin route for login form
 @app.route('/signin', methods=['GET', 'POST'])
