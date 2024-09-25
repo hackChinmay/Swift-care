@@ -1,8 +1,14 @@
 import openai
 import sqlite3
+from dotenv import load_dotenv
+import os
 
+# Load environment variables from .env file
+load_dotenv()
+
+# Set up your OpenAI API key from the .env file
+openai.api_key = os.getenv("OPENAI_API_KEY")
 # Set up your OpenAI API key
-openai.api_key = "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"
 
 def get_college_info(question):
     try:
