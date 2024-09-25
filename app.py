@@ -121,6 +121,30 @@ def confirm_health_camp():
 def blood_donation():
     return render_template('blood_donation.html')
 
+# Route for handling blood donation form submission
+@app.route('/confirm_blood_donation', methods=['POST'])
+@login_required
+def confirm_blood_donation():
+    patient_name = request.form['patient_name']
+    age = request.form['age']
+    blood_component = request.form['blood_component']
+    diagnosis = request.form['diagnosis']
+    doctor_name = request.form['doctor_name']
+    doctor_contact = request.form['doctor_contact']
+    delivery_method = request.form['delivery_method']
+    
+    # Handle logic to store the data or process it (e.g., saving to database)
+
+    # For now, let's just render a confirmation page
+    return render_template('blood_donation_confirmation.html', 
+                           patient_name=patient_name,
+                           age=age, 
+                           blood_component=blood_component, 
+                           diagnosis=diagnosis, 
+                           doctor_name=doctor_name, 
+                           doctor_contact=doctor_contact, 
+                           delivery_method=delivery_method)
+
 # Route for "ICU On Wheel" page (protected by login)
 @app.route('/icu-on-wheel')
 @login_required

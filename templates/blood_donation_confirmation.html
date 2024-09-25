@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blood Donation Confirmation | Swiftcare</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+
+    <style>
+        /* Main Styling for the Confirmation Page */
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            background-color: #cc4433;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 400px;
+            margin: 150px auto;
+        }
+
+        .container h2 {
+            color: white;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .container p {
+            color: white;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        button {
+            width: 100%;
+            padding: 15px;
+            background-color: black;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background-color: #333;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Confirmation Message -->
+<div class="container">
+    <h2>Blood Donation Confirmation</h2>
+    <p>Blood donation details for <strong>{{ patient_name }}</strong> have been successfully recorded.</p>
+    <p><strong>Doctor:</strong> {{ doctor_name }} <br>
+    <strong>Contact:</strong> {{ doctor_contact }}</p>
+    <p><strong>Blood Component Required:</strong> {{ blood_component }} <br>
+    <strong>Diagnosis:</strong> {{ diagnosis }} <br>
+    <strong>Delivery Method:</strong> {{ delivery_method }}</p>
+
+    <a href="{{ url_for('landing_page') }}">
+        <button>Go to Home</button>
+    </a>
+</div>
+
+
+<!-- Footer -->
+<div class="footer">
+    <p>Made With Love In VIT @Hack Battle IEEE CSE</p>
+</div>
+
+
+</body>
+</html>
