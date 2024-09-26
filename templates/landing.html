@@ -6,7 +6,7 @@
     <title>Swiftcare</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
     
-    <!-- Include FontAwesome for robot and arrow icons -->
+    <!-- Include FontAwesome for robot icon -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
     <style>
@@ -77,7 +77,7 @@
         }
 
         .chat-popup-footer input {
-            width: 98%;
+            width: 100%;
             padding: 10px;
             border-radius: 5px;
             border: 1px solid #ccc;
@@ -114,82 +114,19 @@
             color: black;
             align-self: flex-start;
         }
-
-        /* Back arrow styling */
-        .navbar {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            background-color: #cc4433;
-            padding: 20px;
-            width: 98%;
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: 1000;
-        }
-
-        .back-arrow-container {
-            display: flex;
-            align-items: center;
-        }
-
-        .back-arrow {
-            cursor: pointer;
-            font-size: 30px;
-            margin-right: 10px;
-            color: white;
-        }
-
-        .back-arrow:hover {
-            color: #f5f5f5;
-        }
-
-        .navbar h1 {
-            margin: 0;
-            font-size: 28px;
-            font-weight: 600;
-            color: white;
-        }
-
-        .navbar div {
-            display: flex;
-            gap: 20px;
-        }
-
-        .navbar a {
-            background-color: black;
-            color: white;
-            padding: 10px 15px;
-            text-decoration: none;
-            border-radius: 5px;
-            font-size: 14px;
-            font-weight: 500;
-        }
-
-        .navbar a:hover {
-            background-color: white;
-            color: black;
-        }
     </style>
 </head>
 <body>
 
 <!-- Navbar -->
 <div class="navbar">
-    <div class="back-arrow-container">
-        <!-- Back arrow to go to the previous page -->
-        <span class="back-arrow" onclick="window.history.back()">
-            <i class="fas fa-arrow-left"></i>
-        </span>
-        <!-- Swiftcare logo -->
-        <h1>SwiftCare</h1>
-    </div>
+    <!-- Make the Swiftcare logo clickable, linking back to the landing page -->
+    <h1><span style="font-size: 40px; color: rgb(255, 255, 255);">SwiftCare</span></h1>
     <div>
         <a href="{{ url_for('signin') }}">Signin</a>
         <a href="{{ url_for('signup') }}">Signup</a>
         <a href="{{ url_for('about') }}">About</a>
-        <a href="{{ url_for('Profile') }}">Profile</a>
+        <a href="{{ url_for('program') }}">Program</a>
     </div>
 </div>
 
