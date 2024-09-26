@@ -1,1 +1,4 @@
 Flask==2.1.1
+openai==0.28
+python-dotenv==1.0.0
+sqlite3==0.0.1

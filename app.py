@@ -1,10 +1,14 @@
 from flask import Flask, render_template, request, redirect, url_for, flash, session, jsonify
 from datetime import timedelta, datetime
 import sqlite3
-from chatbot import college_chatbot  # Import the chatbot function
+from chatbot import college_chatbot
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
 
 app = Flask(__name__)
-app.secret_key = 'l'
+app.secret_key = os.getenv('SQLITE_SECRET_KEY')
 
 # Set the session lifetime duration (e.g., 20 minutes of inactivity)
 SESSION_TIMEOUT = timedelta(seconds=1200)

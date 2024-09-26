@@ -137,9 +137,10 @@ To setup this project on your local machine:
     ```
 
 6. Setup the .env file:
-    - Create a .env file in the root directory and add your OpenAI API key:
+    - Create a .env file in the root directory and add your OpenAI API key and other environment variables:
     ```makefile
     OPENAI_API_KEY=your-openai-api-key
+    SQLITE_SECRET_KEY=your-secret-key
     ```
 
 7. Run the Flask application:
