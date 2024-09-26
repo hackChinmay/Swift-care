@@ -10,7 +10,7 @@ load_dotenv()
 app = Flask(__name__)
 app.secret_key = os.getenv('SQLITE_SECRET_KEY')
 
-# Set the session lifetime duration (e.g., 20 minutes of inactivity)
+# Set the session lifetime duratsion (e.g., 20 minutes of inactivity)
 SESSION_TIMEOUT = timedelta(seconds=1200)
 
 # Database connection function
