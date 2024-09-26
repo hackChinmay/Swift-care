@@ -178,7 +178,7 @@ To setup this project on your local machine:
 
 - [Chinmay (Project Lead)](https://github.com/Hxzardd)
 - [Darsheel](https://github.com/Hxzardd)
-- [Anshul Gupta](https://github.com/Hxzardd)
+- [Anshul](https://github.com/Hxzardd)
 - [Vimal](https://github.com/Hxzardd)
 - [Kshitij](https://github.com/Hxzardd)
 - [Jegan](https://github.com/Hxzardd)
