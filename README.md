@@ -84,3 +84,43 @@ SwiftCare/
 ├── .env                # Environment variables file (for API keys)
 ├── requirements.txt    # Python dependencies
 └── README.md           # Project README file
+
+## Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/your-username/SwiftCare.git
+   ```
+
+2. Navigate to the project directory:
+    ```bash
+    cd swiftcare
+    ```
+
+3. Create and activate a virtual environment (optional but recommended):
+    ```bash
+    python -m venv venv
+source venv/bin/activate  # On Windows use `venv\Scripts\activate`
+    ```
+
+4. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+5. Set up the SQLite databases:
+    - Create the users.db for user login information
+    ```bash
+    sqlite3 instance/users.db
+    ```
+
+6. Setup the .env file:
+    - Create a .env file in the root directory and add your OpenAI API key:
+    ```makefile
+    OPENAI_API_KEY=your-openai-api-key
+    ```
+
+7. Run the Flask application:
+    ```bash
+    python app.py
+    ```
