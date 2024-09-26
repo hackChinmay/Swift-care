@@ -84,8 +84,22 @@ SwiftCare/
 ├── .env                # Environment variables file (for API keys)
 ├── requirements.txt    # Python dependencies
 └── README.md           # Project README file
+```
+
+---
 
 ## Installation
+
+To setup this project on your local machine:
+
+### Prerequisites
+
+- Python 3.x
+- Flask
+- SQLite3
+- OpenAI API Key
+
+### Steps
 
 1. Clone the repository:
    ```bash
@@ -124,3 +138,5 @@ source venv/bin/activate  # On Windows use `venv\Scripts\activate`
     ```bash
     python app.py
     ```
+
+---
