@@ -8,7 +8,8 @@ __pycache__/
 
 # Virtual environments
 venv/
-.env/
+
+# Ignore database files in the instance folder, but keep the folder
+instance/*.db
 
 # Other sensitive files
-instance/
