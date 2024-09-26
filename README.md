@@ -61,37 +61,37 @@ Key features include:
 ```bash
 SwiftCare/
 │
-├── app.py              # Flask application main file
-├── chatbot.py          # Chatbot logic and OpenAI integration
+├── app.py                                   # Flask application main file
+├── chatbot.py                               # Chatbot logic and OpenAI integration
 ├── instance/
-│   └── users.db        # SQLite database file for storing user and service data
+│   └── users.db                             # SQLite database file for storing user and service data
 ├── static/
 │   ├── css/
-│   │   └── styles.css  # Custom CSS file for the project
+│   │   └── styles.css                       # Custom CSS file for the project
 │   ├── images/ 
 │   │   ├── ACC.jpeg
 │   │   ├── ministry_of_health.svg
 │   │   └── national_health_mission.png
-│   └── js/             # Optional JS files if needed
+│   └── js/                                  # Optional JS files if needed
 ├── templates/
-│   ├── about.html      # About Us page
-│   ├── appointment_booking.html      # Appointment Booking Page
-│   ├── appointment_confirmation.html      # Appointment Booking Confirmation Page
-│   ├── blood_donation_confirmation.html      # Blood Donation Confirmation Page
-│   ├── blood_donation.html      # Blood Donation Page
-│   ├── final_health_camp_confirmation.html      # Health Camp Final Confirmation Page
-│   ├── general_health_checkup.html      # General Health Checkup Page
-│   ├── health_camp_confirmation.html      # Health Camp Confirmation Page
-│   ├── health_camp.html      # Health Camp Page
-│   ├── icu_on_wheel_confirmation.html      # ICU On Wheels Confirmation Page
-│   ├── icu_on_wheel.html      # ICU On Wheels Page
-│   ├── landing.html      # Landing Page
-│   ├── login_signup.html      # Login and Signup Page
-│   └── signup.html      # Signup Page
-├── .env                # Environment variables file (for API keys)
-├── .gitignore          # Git ignore file to exclude certain files from being tracked by git
-├── requirements.txt    # Python dependencies
-└── README.md           # Project README file
+│   ├── about.html                           # About Us page
+│   ├── appointment_booking.html             # Appointment Booking Page
+│   ├── appointment_confirmation.html        # Appointment Booking Confirmation Page
+│   ├── blood_donation_confirmation.html     # Blood Donation Confirmation Page
+│   ├── blood_donation.html                  # Blood Donation Page
+│   ├── final_health_camp_confirmation.html  # Health Camp Final Confirmation Page
+│   ├── general_health_checkup.html          # General Health Checkup Page
+│   ├── health_camp_confirmation.html        # Health Camp Confirmation Page
+│   ├── health_camp.html                     # Health Camp Page
+│   ├── icu_on_wheel_confirmation.html       # ICU On Wheels Confirmation Page
+│   ├── icu_on_wheel.html                    # ICU On Wheels Page
+│   ├── landing.html                         # Landing Page
+│   ├── login_signup.html                    # Login and Signup Page
+│   └── signup.html                          # Signup Page
+├── .env                                     # Environment variables file (for API keys)
+├── .gitignore                               # Git ignore file to exclude certain files from being tracked by git
+├── requirements.txt                         # Python dependencies
+└── README.md                                # Project README file
 ```
 
 ---
