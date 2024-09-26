@@ -15,7 +15,6 @@ SwiftCare is a comprehensive mobile healthcare platform designed to bring health
 - [Screenshots](#screenshots)
 - [Future Enhancements](#future-enhancements)
 - [Contributors](#contributors)
-- [License](#license)
 
 ---
 
@@ -149,3 +148,37 @@ To setup this project on your local machine:
     ```
 
 ---
+
+## Usage
+
+- **Sign up and login**: Users need to sign up and log in to access the main platform.
+- **Healthcare services**: Users can book different services such as health checkups, blood donations, or ICU on wheels.
+- **Chatbot**: Use the AI chatbot to ask healthcare-related questions or general queries about the services.
+- **Back button functionality**: Navigate back to the home page with ease after exploring different services.
+
+---
+
+## Screenshots
+
+
+
+---
+
+## Future Enhancements
+
+- **Admin dashboard**: A dashboard for admins to manage user data, services, and hospitals.
+- **Integration with external APIs**: Connect with healthcare databases or local hospitals for real-time data.
+- **Payment gateway integration**: Include options for users to make payments for premium services.
+- **Expanded chatbot functionality**: Add more context-specific features for the AI assistant to improve the user experience.
+
+---
+
+## Contributors
+
+- [Chinmay (Project Lead)](https://github.com/Hxzardd)
+- [Darsheel](https://github.com/Hxzardd)
+- [Anshul Gupta](https://github.com/Hxzardd)
+- [Vimal](https://github.com/Hxzardd)
+- [Kshitij](https://github.com/Hxzardd)
+- [Jegan](https://github.com/Hxzardd)
+
